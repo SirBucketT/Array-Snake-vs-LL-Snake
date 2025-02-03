@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "header.h"
 #include "raylib.h"
+#include "external/glfw/src/internal.h"
 
 #define SCREEN_WIDTH   1800
 #define SCREEN_HEIGHT  900
