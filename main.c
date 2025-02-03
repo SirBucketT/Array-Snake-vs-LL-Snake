@@ -23,9 +23,35 @@ typedef enum {
 Color green = {173, 204, 96, 255};
 Color darkGreen = {43, 51, 24, 255};
 
-int main(void) {
+snakeData() {
+    Vector2 snake[SNAKE_MAX_LENGTH];
+    int snakeLength = INITIAL_LENGTH;
+    Direction currentDirection = DIR_RIGHT;
+
+    int startX = SCREEN_WIDTH / 2 / CELL_SIZE;
+    int startY = SCREEN_HEIGHT / 2 / CELL_SIZE;
+    for (int i = 0; i < snakeLength; i++) {
+        snake[i].x = startX - i;
+        snake[i].y = startY;
+    }
+}
+
+food() {
+    Vector2 food;
+    food.x = rand() % (SCREEN_WIDTH / CELL_SIZE);
+    food.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
+}
+
+int main(void) {s
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake.. Snake.. SNAKE!");
     SetTargetFPS(60);
+
+    bool gameOver = false;
+    bool gamePaused = false;
+
+    int framesCounter = 0;
+
+    srand((unsigned int)time(NULL));
 
     while (!WindowShouldClose()){
 
