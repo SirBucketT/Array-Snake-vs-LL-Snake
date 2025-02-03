@@ -32,3 +32,7 @@
 1523	3435	7602875861951364	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.obj	fe1876998eac61fb
 6096	6191	7602875907685823	_deps/raylib-build/raylib/libraylib.a	45b0fe70aface0a8
 6191	6293	7602875908634604	hello_raylib_with_cmake.exe	aaa0da4501b4384f
+7	81	7602885967763404	CMakeFiles/hello_raylib_with_cmake.dir/main.c.obj	9f8c7583880f7e4f
+81	266	7602885968509129	hello_raylib_with_cmake.exe	aaa0da4501b4384f
+7	79	7602886412555799	CMakeFiles/hello_raylib_with_cmake.dir/main.c.obj	9f8c7583880f7e4f
+79	244	7602886413270347	hello_raylib_with_cmake.exe	aaa0da4501b4384f
