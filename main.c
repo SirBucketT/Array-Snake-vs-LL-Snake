@@ -34,17 +34,53 @@ struct GameState {
 Color green = {173, 204, 96, 255};
 Color darkGreen = {43, 51, 24, 255};
 
-int main(void) {
+GameSetup(){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake.. Snake.. SNAKE!");
     SetTargetFPS(60);
 
-    while (!WindowShouldClose()){
+    // Seed the random number generator:
+    srand( time(NULL) );
 
+    // Initialize game state variables:
+    gameState.gameOver = false;
+    gameState.gamePaused = false;
+    gameState.framesCounter = 0;
+
+    gameState.snakeLength = INITIAL_LENGTH;
+    gameState.currentDirection = DIR_RIGHT;
+
+    // Position the snake in the middle of the screen, in "grid" coordinates
+    int centerX = (SCREEN_WIDTH / CELL_SIZE) / 2;
+    int centerY = (SCREEN_HEIGHT / CELL_SIZE) / 2;
+
+    // Initialize the snake segments
+    for (int i = 0; i < gameState.snakeLength; i++) {
+        // Each segment is placed one cell to the left of the previous (horizontal snake)
+        gameState.snakePositions[i].x = centerX - i;
+        gameState.snakePositions[i].y = centerY;
+    }
+
+    // Create an initial food location
+    gameState.foodPosition.x = rand() % (SCREEN_WIDTH  / CELL_SIZE);
+    gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
+}
+
+
+int main(void) {
+    GameSetup();
+
+    while (!WindowShouldClose()){
+        //ProcessInput();
+          //  UpdateGame();
+            //RenderGame();
         BeginDrawing();
         ClearBackground(green);
 
         EndDrawing();
     }
     CloseWindow();
+    //CloseGame();
     return 0;
+
+
 }
