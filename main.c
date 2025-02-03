@@ -65,12 +65,41 @@ GameSetup(){
     gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
 }
 
+ProcessInput(){
+
+    if (gameState.gameOver && IsKeyPressed(KEY_R)){
+        GameSetup();
+        return;
+    }
+
+    if (IsKeyPressed(KEY_P)){
+        gameState.gamePaused = !gameState.gamePaused;
+    }
+
+    //checks input
+    if (gameState.gamePaused && !gameState.gameOver) {
+        if (IsKeyPressed(KEY_UP) && gameState.currentDirection != DIR_UP) {
+            gameState.currentDirection = DIR_UP;
+        }
+        if (IsKeyPressed(KEY_DOWN) && gameState.currentDirection != DIR_DOWN) {
+            gameState.currentDirection = DIR_DOWN;
+        }
+        if (IsKeyPressed(KEY_LEFT) && gameState.currentDirection != DIR_LEFT) {
+            gameState.currentDirection = DIR_LEFT;
+        }
+        if (IsKeyPressed(KEY_RIGHT) && gameState.currentDirection != DIR_RIGHT) {
+            gameState.currentDirection = DIR_RIGHT;
+        }
+    }
+}
+
+
 
 int main(void) {
     GameSetup();
 
     while (!WindowShouldClose()){
-        //ProcessInput();
+        ProcessInput();
           //  UpdateGame();
             //RenderGame();
         BeginDrawing();
