@@ -11,7 +11,7 @@
 // Snake settings
 #define SNAKE_MAX_LENGTH  1000
 #define INITIAL_LENGTH    5
-#define GAME_SPEED        30
+#define GAME_SPEED        10
 
 typedef enum {
     DIR_UP,
