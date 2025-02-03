@@ -42,7 +42,7 @@ food() {
     food.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
 }
 
-int main(void) {s
+int main(void) {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake.. Snake.. SNAKE!");
     SetTargetFPS(60);
 
