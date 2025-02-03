@@ -41,7 +41,6 @@ void GameSetup(void){
     // Seed the random number generator:
     srand( time(NULL) );
 
-    // Initialize game state variables:
     gameState.gameOver = false;
     gameState.gamePaused = false;
     gameState.framesCounter = 0;
@@ -78,16 +77,16 @@ void ProcessInput(void){
 
     //checks input
     if (gameState.gamePaused && !gameState.gameOver) {
-        if (IsKeyPressed(KEY_UP) && gameState.currentDirection != DIR_UP) {
+        if (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W) && gameState.currentDirection != DIR_UP) {
             gameState.currentDirection = DIR_UP;
         }
-        if (IsKeyPressed(KEY_DOWN) && gameState.currentDirection != DIR_DOWN) {
+        if (IsKeyPressed(KEY_DOWN)|| IsKeyPressed(KEY_S) && gameState.currentDirection != DIR_DOWN) {
             gameState.currentDirection = DIR_DOWN;
         }
-        if (IsKeyPressed(KEY_LEFT) && gameState.currentDirection != DIR_LEFT) {
+        if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A) && gameState.currentDirection != DIR_LEFT) {
             gameState.currentDirection = DIR_LEFT;
         }
-        if (IsKeyPressed(KEY_RIGHT) && gameState.currentDirection != DIR_RIGHT) {
+        if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D) && gameState.currentDirection != DIR_RIGHT) {
             gameState.currentDirection = DIR_RIGHT;
         }
     }
