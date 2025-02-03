@@ -23,10 +23,9 @@ typedef enum {
 Color green = {173, 204, 96, 255};
 Color darkGreen = {43, 51, 24, 255};
 
-
-
 int main(void) {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake.. Snake.. SNAKE!");
+    SetTargetFPS(60);
 
     while (!WindowShouldClose()){
 
