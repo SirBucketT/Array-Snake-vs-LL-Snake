@@ -90,6 +90,10 @@ void ProcessInput(void){
             gameState.currentDirection = DIR_RIGHT;
         }
     }
+
+    for (int i = 0; i < gameState.snakePositions; i++) {
+        
+    }
 }
 
 
