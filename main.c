@@ -36,7 +36,6 @@ Color darkGreen = {43, 51, 24, 255};
 
 void GameSetup(void){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake.. Snake.. SNAKE!");
-    SetTargetFPS(60);
 
     // Seed the random number generator:
     srand( time(NULL) );
@@ -100,6 +99,7 @@ int main(void) {
     GameSetup();
 
     while (!WindowShouldClose()){
+        DrawFPS(SCREEN_WIDTH - SCREEN_WIDTH + 10, SCREEN_HEIGHT - SCREEN_HEIGHT + 10);
         ProcessInput();
           //  UpdateGame();
             //RenderGame();
