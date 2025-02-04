@@ -91,6 +91,7 @@ void ProcessInput(void){
         }
     }
 
+    //snake movement
     switch (gameState.currentDirection) {
         case DIR_UP:
             gameState.snakePositions[0].y -= GAME_SPEED;
