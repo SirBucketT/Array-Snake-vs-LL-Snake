@@ -91,8 +91,22 @@ void ProcessInput(void){
         }
     }
 
-    for (int i = 0; i < gameState.snakePositions; i++) {
-        
+    switch (gameState.currentDirection) {
+        case DIR_UP:
+            gameState.snakePositions[0].y -= GAME_SPEED;
+        break;
+        case DIR_DOWN:
+            gameState.snakePositions[0].y += GAME_SPEED;
+        case DIR_LEFT:
+            gameState.snakePositions[0].x -= GAME_SPEED;
+        break;
+        case DIR_RIGHT:
+            gameState.snakePositions[0].x += GAME_SPEED;
+        break;
+    }
+
+    for (int i = gameState.snakeLength - 1; i >= 0; i--) {
+        gameState.snakePositions[i] = gameState.snakePositions[i + 1];
     }
 }
 
