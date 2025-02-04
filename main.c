@@ -71,12 +71,13 @@ void ProcessInput(void){
         return;
     }
 
+
     if (IsKeyPressed(KEY_P)){
         gameState.gamePaused = !gameState.gamePaused;
     }
 
     //checks input
-    if (gameState.gamePaused && !gameState.gameOver) {
+    if (!gameState.gamePaused && !gameState.gameOver) {
         if (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W) && gameState.currentDirection != DIR_UP) {
             gameState.currentDirection = DIR_UP;
         }
