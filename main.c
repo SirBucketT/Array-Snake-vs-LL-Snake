@@ -152,9 +152,9 @@ void Food(void) {
           SCREEN_WIDTH / 2, +20,
           25, BLACK);
 
-    bool isEaten = true;
+    bool isEaten = false;
 
-    if (isEaten = true) {
+    if (isEaten != true) {
         DrawRectangle(
         (int)gameState.foodPosition.x * CELL_SIZE,
         (int)gameState.foodPosition.y * CELL_SIZE,
@@ -163,7 +163,7 @@ void Food(void) {
         );
     }
     if (gameState.snakePositions[0].x != gameState.foodPosition.x && gameState.snakePositions[0].y != gameState.foodPosition.y) {
-        isEaten = false;
+        isEaten = true;
     } else if (gameState.snakePositions[0].x == gameState.foodPosition.x && gameState.snakePositions[0].y == gameState.foodPosition.y) {
         gameState.score++;
         gameState.snakeLength++;
