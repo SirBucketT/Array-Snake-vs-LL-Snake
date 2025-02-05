@@ -132,6 +132,9 @@ void ProcessInput(void) {
             gameState.snakePositions[j] = gameState.snakePositions[j - 1];
         }
     }
+    if (gameState.snakePositions[0].x >= SCREEN_WIDTH || gameState.snakePositions[0].y >= SCREEN_HEIGHT) {
+        gameState.gameOver = true;
+    }
 }
 
 void FoodUpdate(void) {
@@ -139,11 +142,16 @@ void FoodUpdate(void) {
     gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
 }
 
+
+// -----------------------------------------------------------------------
+// Food spawner, score manager & food position updater
+// -----------------------------------------------------------------------
+
 void Food(void) {
 
     DrawText(TextFormat("Score %d", gameState.score),
           SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
-          50, BLACK);
+          20, BLACK);
 
     if (gameState.snakePositions[0].x != gameState.foodPosition.x && gameState.snakePositions[0].y != gameState.foodPosition.y) {
         DrawRectangle(
