@@ -5,8 +5,8 @@
 #include "raylib.h"
 #include <time.h>
 
-#define SCREEN_WIDTH  800
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH  1800
+#define SCREEN_HEIGHT 800
 #define CELL_SIZE     10
 
 // Snake settings
@@ -30,6 +30,7 @@ struct GameState {
     bool gameOver;
     bool gamePaused;
     int framesCounter;
+    int score;
 } gameState;
 
 Color green = {173, 204, 96, 255};
@@ -37,13 +38,14 @@ Color darkGreen = {43, 51, 24, 255};
 
 void GameSetup(void) {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake.. Snake.. SNAKE!");
-    SetTargetFPS(15);
+    SetTargetFPS(35);
 
     srand(time(NULL));
 
     gameState.gameOver = false;
     gameState.gamePaused = false;
     gameState.framesCounter = 0;
+    gameState.score = 0;
 
     gameState.snakeLength = INITIAL_LENGTH;
     gameState.currentDirection = DIR_RIGHT;
@@ -56,8 +58,8 @@ void GameSetup(void) {
         gameState.snakePositions[i].y = centerY;
     }
 
-    gameState.foodPosition.x = rand() % (SCREEN_WIDTH  / CELL_SIZE);
-    gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
+    //gameState.foodPosition.x = rand() % (SCREEN_WIDTH  / CELL_SIZE);
+    //gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
 }
 
 // -----------------------------------------------------------------------
@@ -132,7 +134,31 @@ void ProcessInput(void) {
     }
 }
 
-int main(void) {
+void FoodUpdate(void) {
+    gameState.foodPosition.x = rand() % (SCREEN_WIDTH  / CELL_SIZE);
+    gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
+}
+
+void Food(void) {
+
+    DrawText(TextFormat("Score %d", gameState.score),
+          SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
+          50, BLACK);
+
+    if (gameState.snakePositions[0].x != gameState.foodPosition.x && gameState.snakePositions[0].y != gameState.foodPosition.y) {
+        DrawRectangle(
+        (int)gameState.foodPosition.x * CELL_SIZE,
+        (int)gameState.foodPosition.y * CELL_SIZE,
+        CELL_SIZE, CELL_SIZE,
+        RED
+        );
+    } else if (gameState.snakePositions[0].x == gameState.foodPosition.x && gameState.snakePositions[0].y == gameState.foodPosition.y) {
+        gameState.score++;
+        FoodUpdate();
+    }
+}
+
+int main(void){
 
     GameSetup();
 
@@ -140,6 +166,7 @@ int main(void) {
         BeginDrawing();
         ClearBackground(green);
         DrawFPS(10, 10);
+        Food();
         ProcessInput();
         EndDrawing();
     }
