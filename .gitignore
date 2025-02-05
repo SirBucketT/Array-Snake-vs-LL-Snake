@@ -1,0 +1,65 @@
+# ----
+# Prerequisites
+# ----
+*.d
+
+# ----
+# Object files
+# ----
+*.o
+*.ko
+*.obj
+*.elf
+
+# ----
+# Linked files
+# ----
+*.ilk
+*.map
+*.exp
+
+# ----
+# Precompiled Headers
+# ----
+*.gch
+*.pch
+
+# ----
+# Libraries
+# ----
+*.lib
+*.a
+*.la
+*.lo
+*.slo
+
+# ----
+# Shared objects (e.g. dynamic libraries)
+# ----
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# ----
+# Executables and debug
+# ----
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# ----
+# Misc
+# ----
+*.su
+*.swp
+*~
+
+# ----
+# Generated files / folders
+# ----
+/build/
+/dist/
