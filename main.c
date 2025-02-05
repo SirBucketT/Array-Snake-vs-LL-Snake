@@ -7,7 +7,7 @@
 
 #define SCREEN_WIDTH  1800
 #define SCREEN_HEIGHT 800
-#define CELL_SIZE     10
+#define CELL_SIZE     15
 
 // Snake settings
 #define SNAKE_MAX_LENGTH  1000
@@ -142,7 +142,6 @@ void FoodUpdate(void) {
     gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
 }
 
-
 // -----------------------------------------------------------------------
 // Food spawner, score manager & food position updater
 // -----------------------------------------------------------------------
@@ -150,18 +149,24 @@ void FoodUpdate(void) {
 void Food(void) {
 
     DrawText(TextFormat("Score %d", gameState.score),
-          SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
-          20, BLACK);
+          SCREEN_WIDTH / 2, +20,
+          25, BLACK);
 
-    if (gameState.snakePositions[0].x != gameState.foodPosition.x && gameState.snakePositions[0].y != gameState.foodPosition.y) {
+    bool isEaten = true;
+
+    if (isEaten = true) {
         DrawRectangle(
         (int)gameState.foodPosition.x * CELL_SIZE,
         (int)gameState.foodPosition.y * CELL_SIZE,
         CELL_SIZE, CELL_SIZE,
         RED
         );
+    }
+    if (gameState.snakePositions[0].x != gameState.foodPosition.x && gameState.snakePositions[0].y != gameState.foodPosition.y) {
+        isEaten = false;
     } else if (gameState.snakePositions[0].x == gameState.foodPosition.x && gameState.snakePositions[0].y == gameState.foodPosition.y) {
         gameState.score++;
+        gameState.snakeLength++;
         FoodUpdate();
     }
 }
