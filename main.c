@@ -7,7 +7,7 @@
 
 #define SCREEN_WIDTH  800
 #define SCREEN_HEIGHT 600
-#define CELL_SIZE     20
+#define CELL_SIZE     10
 
 // Snake settings
 #define SNAKE_MAX_LENGTH  1000
