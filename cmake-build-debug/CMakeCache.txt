@@ -220,7 +220,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=raylib_projects
+CMAKE_PROJECT_NAME:STATIC=snake..Snake..SNAKE
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=3.4.0
@@ -442,6 +442,15 @@ raylib_projects_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 raylib_projects_SOURCE_DIR:STATIC=C:/Projects/Array-Snake-vs-LL-Snake
+
+//Value Computed by CMake
+snake..Snake..SNAKE_BINARY_DIR:STATIC=C:/Projects/Array-Snake-vs-LL-Snake/cmake-build-debug
+
+//Value Computed by CMake
+snake..Snake..SNAKE_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+snake..Snake..SNAKE_SOURCE_DIR:STATIC=C:/Projects/Array-Snake-vs-LL-Snake
 
 
 ########################

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include "raylib.h"
 #include <time.h>
 
@@ -11,7 +12,7 @@
 // Snake settings
 #define SNAKE_MAX_LENGTH  1000
 #define INITIAL_LENGTH    5
-#define GAME_SPEED        10
+#define GAME_SPEED        1
 
 typedef enum {
     DIR_UP,
@@ -34,11 +35,11 @@ struct GameState {
 Color green = {173, 204, 96, 255};
 Color darkGreen = {43, 51, 24, 255};
 
-void GameSetup(void){
+void GameSetup(void) {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake.. Snake.. SNAKE!");
+    SetTargetFPS(15);
 
-    // Seed the random number generator:
-    srand( time(NULL) );
+    srand(time(NULL));
 
     gameState.gameOver = false;
     gameState.gamePaused = false;
@@ -47,72 +48,87 @@ void GameSetup(void){
     gameState.snakeLength = INITIAL_LENGTH;
     gameState.currentDirection = DIR_RIGHT;
 
-    // Position the snake in the middle of the screen, in "grid" coordinates
     int centerX = (SCREEN_WIDTH / CELL_SIZE) / 2;
     int centerY = (SCREEN_HEIGHT / CELL_SIZE) / 2;
 
-    // Initialize the snake segments
     for (int i = 0; i < gameState.snakeLength; i++) {
-        // Each segment is placed one cell to the left of the previous (horizontal snake)
         gameState.snakePositions[i].x = centerX - i;
         gameState.snakePositions[i].y = centerY;
     }
 
-    // Create an initial food location
     gameState.foodPosition.x = rand() % (SCREEN_WIDTH  / CELL_SIZE);
     gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
 }
 
-//  -----------------------------------------------------------------------
-//  Game input and movement logic
-//  -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
+// Game input, movement logic & snake rendering
+// -----------------------------------------------------------------------
+void ProcessInput(void) {
 
+    gameState.framesCounter += 1;
 
-void ProcessInput(void){
-
-    if (gameState.gameOver && IsKeyPressed(KEY_R)){
+    if (gameState.gameOver && IsKeyPressed(KEY_R)) {
         GameSetup();
         return;
     }
 
-
-    if (IsKeyPressed(KEY_P)){
+    if (IsKeyPressed(KEY_P)) {
         gameState.gamePaused = !gameState.gamePaused;
     }
 
-    //checks input
     if (!gameState.gamePaused && !gameState.gameOver) {
-        if (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W) && gameState.currentDirection != DIR_UP) {
+        if ((IsKeyPressed(KEY_UP)   || IsKeyPressed(KEY_W)) && gameState.currentDirection != DIR_UP && gameState.currentDirection != DIR_DOWN) {
             gameState.currentDirection = DIR_UP;
         }
-        if (IsKeyPressed(KEY_DOWN)|| IsKeyPressed(KEY_S) && gameState.currentDirection != DIR_DOWN) {
+        if ((IsKeyPressed(KEY_DOWN) || IsKeyPressed(KEY_S)) && gameState.currentDirection != DIR_DOWN && gameState.currentDirection != DIR_UP) {
             gameState.currentDirection = DIR_DOWN;
         }
-        if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A) && gameState.currentDirection != DIR_LEFT) {
+        if ((IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A)) && gameState.currentDirection != DIR_LEFT && gameState.currentDirection != DIR_RIGHT) {
             gameState.currentDirection = DIR_LEFT;
         }
-        if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D) && gameState.currentDirection != DIR_RIGHT) {
+        if ((IsKeyPressed(KEY_RIGHT)|| IsKeyPressed(KEY_D)) && gameState.currentDirection != DIR_RIGHT && gameState.currentDirection != DIR_LEFT) {
             gameState.currentDirection = DIR_RIGHT;
         }
     }
 
-    //snake movement
     switch (gameState.currentDirection) {
         case DIR_UP:
             gameState.snakePositions[0].y -= GAME_SPEED;
-        break;
+            break;
         case DIR_DOWN:
             gameState.snakePositions[0].y += GAME_SPEED;
+            break;
         case DIR_LEFT:
             gameState.snakePositions[0].x -= GAME_SPEED;
-        break;
+            break;
         case DIR_RIGHT:
             gameState.snakePositions[0].x += GAME_SPEED;
-        break;
+            break;
     }
 
-    for (int i = gameState.snakeLength - 1; i >= 0; i--) {
-        gameState.snakePositions[i] = gameState.snakePositions[i + 1];
+    for (int i = 0; i < gameState.snakeLength; i++) {
+        if (i == 0) {
+            DrawRectangle(
+                (int)gameState.snakePositions[i].x * CELL_SIZE,
+                (int)gameState.snakePositions[i].y * CELL_SIZE,
+                CELL_SIZE, CELL_SIZE,
+                GREEN
+            );
+        } else {
+            DrawRectangle(
+                (int)gameState.snakePositions[i].x * CELL_SIZE,
+                (int)gameState.snakePositions[i].y * CELL_SIZE,
+                CELL_SIZE, CELL_SIZE,
+                BLACK
+            );
+        }
+    }
+
+    if (gameState.framesCounter >= GAME_SPEED) {
+        gameState.framesCounter = 0;
+        for (int j = gameState.snakeLength - 1; j > 0; j--) {
+            gameState.snakePositions[j] = gameState.snakePositions[j - 1];
+        }
     }
 }
 
@@ -120,17 +136,13 @@ int main(void) {
 
     GameSetup();
 
-    while (!WindowShouldClose()){
-        DrawFPS(SCREEN_WIDTH - SCREEN_WIDTH + 10, SCREEN_HEIGHT - SCREEN_HEIGHT + 10);
-        ProcessInput();
-          //  UpdateGame();
-            //RenderGame();
+    while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(green);
-
+        DrawFPS(10, 10);
+        ProcessInput();
         EndDrawing();
     }
     CloseWindow();
-    //CloseGame();
     return 0;
 }

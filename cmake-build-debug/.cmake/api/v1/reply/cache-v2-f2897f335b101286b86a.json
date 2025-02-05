@@ -1203,7 +1203,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "raylib_projects"
+			"value" : "snake..Snake..SNAKE"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",
@@ -2267,6 +2267,42 @@
 		},
 		{
 			"name" : "raylib_projects_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Projects/Array-Snake-vs-LL-Snake"
+		},
+		{
+			"name" : "snake..Snake..SNAKE_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Projects/Array-Snake-vs-LL-Snake/cmake-build-debug"
+		},
+		{
+			"name" : "snake..Snake..SNAKE_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "snake..Snake..SNAKE_SOURCE_DIR",
 			"properties" : 
 			[
 				{

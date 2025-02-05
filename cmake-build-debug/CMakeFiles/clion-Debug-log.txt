@@ -19,6 +19,6 @@ CMake Deprecation Warning at cmake-build-debug/_deps/raylib-src/CMakeLists.txt:1
 -- Compiling with the flags:
 --   PLATFORM=PLATFORM_DESKTOP
 --   GRAPHICS=GRAPHICS_API_OPENGL_33
--- Configuring done (0.8s)
+-- Configuring done (1.4s)
 -- Generating done (0.1s)
 -- Build files have been written to: C:/Projects/Array-Snake-vs-LL-Snake/cmake-build-debug

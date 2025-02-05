@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(raylib_projects C)
+project(snake..Snake..SNAKE C)
 
 set(CMAKE_C_STANDARD 99)
 
