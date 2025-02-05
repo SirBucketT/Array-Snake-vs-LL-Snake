@@ -153,6 +153,11 @@ void Food(void) {
           SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
           20, BLACK);
 
+
+
+
+    
+
     if (gameState.snakePositions[0].x != gameState.foodPosition.x && gameState.snakePositions[0].y != gameState.foodPosition.y) {
         DrawRectangle(
         (int)gameState.foodPosition.x * CELL_SIZE,
