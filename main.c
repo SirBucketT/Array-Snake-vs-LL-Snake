@@ -111,8 +111,6 @@ void ProcessInput(void){
     }
 }
 
-
-
 int main(void) {
 
     GameSetup();
