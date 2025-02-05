@@ -63,6 +63,11 @@ void GameSetup(void){
     gameState.foodPosition.y = rand() % (SCREEN_HEIGHT / CELL_SIZE);
 }
 
+//  -----------------------------------------------------------------------
+//  Game input and movement logic
+//  -----------------------------------------------------------------------
+
+
 void ProcessInput(void){
 
     if (gameState.gameOver && IsKeyPressed(KEY_R)){
