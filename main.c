@@ -187,7 +187,6 @@ int main(void){
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(green);
-        DrawFPS(10, 10);
         Food();
         ProcessInput();
         GameOverCheck();
