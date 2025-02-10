@@ -169,6 +169,15 @@ void Food(void) {
         gameState.snakeLength++;
         FoodUpdate();
     }
+    if (gameState.snakePositions[0].x <= 0 || gameState.snakePositions[0].y <= 0) {
+        gameState.gameOver = true;
+    }
+}
+
+void GameOverCheck(void) {
+    if (gameState.gameOver == false) {
+        
+    }
 }
 
 int main(void){
