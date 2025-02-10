@@ -200,15 +200,6 @@ void GameOverCheck(void) {
     }
 }
 
-void FreeSnake(void) {
-    SnakeNode* current = gameState.snakeHead;
-    while (current != NULL) {
-        SnakeNode* temp = current;
-        current = current->next;
-        free(temp);
-    }
-}
-
 int main(void) {
     GameSetup();
     while (!WindowShouldClose()) {
@@ -221,7 +212,6 @@ int main(void) {
         EndDrawing();
     }
 
-    FreeSnake();
     CloseWindow();
     return 0;
 }
