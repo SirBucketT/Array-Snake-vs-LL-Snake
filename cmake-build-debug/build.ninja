@@ -49,9 +49,9 @@ cmake_ninja_workdir = C$:/Projects/Array-Snake-vs-LL-Snake/cmake-build-debug/
 
 build cmake_object_order_depends_target_hello_raylib_with_cmake: phony || cmake_object_order_depends_target_glfw cmake_object_order_depends_target_raylib
 
-build CMakeFiles/hello_raylib_with_cmake.dir/main.c.obj: C_COMPILER__hello_raylib_with_cmake_unscanned_Debug C$:/Projects/Array-Snake-vs-LL-Snake/main.c || cmake_object_order_depends_target_hello_raylib_with_cmake
+build CMakeFiles/hello_raylib_with_cmake.dir/SnakeArray.c.obj: C_COMPILER__hello_raylib_with_cmake_unscanned_Debug C$:/Projects/Array-Snake-vs-LL-Snake/SnakeArray.c || cmake_object_order_depends_target_hello_raylib_with_cmake
   DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
-  DEP_FILE = CMakeFiles\hello_raylib_with_cmake.dir\main.c.obj.d
+  DEP_FILE = CMakeFiles\hello_raylib_with_cmake.dir\SnakeArray.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always
   INCLUDES = -IC:/Projects/Array-Snake-vs-LL-Snake/cmake-build-debug/_deps/raylib-src/src/src -IC:/Projects/Array-Snake-vs-LL-Snake/cmake-build-debug/_deps/raylib-src/src -IC:/Projects/Array-Snake-vs-LL-Snake/cmake-build-debug/_deps/raylib-src/src/external/glfw/include
   OBJECT_DIR = CMakeFiles\hello_raylib_with_cmake.dir
@@ -65,7 +65,7 @@ build CMakeFiles/hello_raylib_with_cmake.dir/main.c.obj: C_COMPILER__hello_rayli
 #############################################
 # Link the executable hello_raylib_with_cmake.exe
 
-build hello_raylib_with_cmake.exe: C_EXECUTABLE_LINKER__hello_raylib_with_cmake_Debug CMakeFiles/hello_raylib_with_cmake.dir/main.c.obj | _deps/raylib-build/raylib/libraylib.a _deps/raylib-build/raylib/external/glfw/src/libglfw3.a || _deps/raylib-build/raylib/external/glfw/src/libglfw3.a _deps/raylib-build/raylib/libraylib.a
+build hello_raylib_with_cmake.exe: C_EXECUTABLE_LINKER__hello_raylib_with_cmake_Debug CMakeFiles/hello_raylib_with_cmake.dir/SnakeArray.c.obj | _deps/raylib-build/raylib/libraylib.a _deps/raylib-build/raylib/external/glfw/src/libglfw3.a || _deps/raylib-build/raylib/external/glfw/src/libglfw3.a _deps/raylib-build/raylib/libraylib.a
   FLAGS = -g
   LINK_LIBRARIES = _deps/raylib-build/raylib/libraylib.a  -lopengl32  -lglu32  -lwinmm  _deps/raylib-build/raylib/external/glfw/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\hello_raylib_with_cmake.dir

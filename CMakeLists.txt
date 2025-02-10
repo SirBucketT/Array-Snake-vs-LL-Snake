@@ -27,7 +27,7 @@ else()
 endif()
 
 # Add executable
-add_executable(hello_raylib_with_cmake main.c)
+add_executable(hello_raylib_with_cmake SnakeArray.c)
 
 # Include Raylib headers
 target_include_directories(hello_raylib_with_cmake PRIVATE ${raylib_SOURCE_DIR}/src)
