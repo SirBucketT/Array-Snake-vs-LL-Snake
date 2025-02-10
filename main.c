@@ -169,14 +169,14 @@ void Food(void) {
         gameState.snakeLength++;
         FoodUpdate();
     }
-    if (gameState.snakePositions[0].x <= 0 || gameState.snakePositions[0].y <= 0) {
+    if (gameState.snakePositions[0].x < 0 || gameState.snakePositions[0].x >= SCREEN_WIDTH / CELL_SIZE || gameState.snakePositions[0].y < 0 || gameState.snakePositions[0].y >= SCREEN_HEIGHT / CELL_SIZE) {
         gameState.gameOver = true;
-    }
+     }
 }
 
 void GameOverCheck(void) {
-    if (gameState.gameOver == false) {
-        
+    if (gameState.gameOver) {
+        DrawText("Game Over", SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2, 30, BLACK);
     }
 }
 
@@ -190,6 +190,7 @@ int main(void){
         DrawFPS(10, 10);
         Food();
         ProcessInput();
+        GameOverCheck();
         EndDrawing();
     }
     CloseWindow();
